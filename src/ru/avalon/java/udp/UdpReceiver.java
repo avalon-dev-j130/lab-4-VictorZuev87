@@ -20,7 +20,7 @@ public final class UdpReceiver {
         // 2. Формируем пакет, на основе созданного буфера.
         final DatagramPacket packet = preparePacket(buffer);
         // 3. Выбираем порт, на который ожидается получение сообщения.
-        final int port = 0;
+        final int port = 8080;
         // 4. Формируем сокет, связанный с выбранным портом.
         final DatagramSocket socket = prepareSocket(port);
         // 5. Получаем сообщение.
@@ -76,7 +76,9 @@ public final class UdpReceiver {
      * @return строковое сообщение.
      */
     private static String getMessage(DatagramPacket packet) throws UnsupportedEncodingException {
-        return new String(packet.getData(), "UTF-8");
+        String str = new String(packet.getData(), "UTF-8");
+        System.out.print(str);
+        return str;
     }
 
 }

@@ -44,7 +44,7 @@ public final class TcpSender {
      * @return экземпля типа {@link SocketAddress}
      */
     private static SocketAddress prepareAddress() {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress(8080);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("localhost", 15000);
         return inetSocketAddress;
     }
 
@@ -60,7 +60,7 @@ public final class TcpSender {
      */
     private static Socket connect(SocketAddress address) throws IOException {
          InetAddress inetAddress = InetAddress.getLocalHost();
-         Socket socket = new Socket(inetAddress, 8080);
+         Socket socket = new Socket(inetAddress, 15000);
          return socket;
 
     }
@@ -76,8 +76,13 @@ public final class TcpSender {
     private static void send(Socket socket, String message) throws IOException {
         OutputStream stream = socket.getOutputStream();
         PrintWriter writer = new PrintWriter(stream);
-        writer.write(message);
+        writer.println(message);
         writer.flush();
+        InputStream newStream = socket.getInputStream();
+        Reader reader = new InputStreamReader(newStream);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        System.out.println(line);
     }
 
 }

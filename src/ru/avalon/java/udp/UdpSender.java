@@ -50,7 +50,7 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод prepareAddress класса UdpSender
          */
-        SocketAddress address = new InetSocketAddress(0);
+        SocketAddress address = new InetSocketAddress("localhost", 8080);
         return address;
     }
 
