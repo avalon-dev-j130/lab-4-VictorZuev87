@@ -57,7 +57,7 @@ public final class TcpReceiver {
             System.out.println(line);
             OutputStream newStream = socket.getOutputStream();
             PrintWriter writer = new PrintWriter(newStream);
-            writer.write(line + "finesh");
+            writer.write(line + "finish");
             writer.flush();
             return line;
     }
