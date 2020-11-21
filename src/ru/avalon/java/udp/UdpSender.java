@@ -1,9 +1,9 @@
 package ru.avalon.java.udp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketAddress;
+import java.io.InputStreamReader;
+import java.net.*;
 
 /**
  * Упражнение, направленное на выработку умений, связанных
@@ -35,11 +35,10 @@ public final class UdpSender {
      *
      * @return текстовое сообщение.
      */
-    private static String prepareMessage() {
-        /*
-         * TODO Реализовать метод prepareMessage класса UdpSender
-         */
-        throw new UnsupportedOperationException("Not implemented yet!");
+    private static String prepareMessage() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+        return str;
     }
 
     /**
@@ -51,7 +50,8 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод prepareAddress класса UdpSender
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        SocketAddress address = new InetSocketAddress("localhost", 8080);
+        return address;
     }
 
     /**
@@ -61,10 +61,8 @@ public final class UdpSender {
      * @throws IOException
      */
     private static DatagramSocket createSocket() throws IOException {
-        /*
-         * TODO Реализовать метод createSocket класса UdpSender
-         */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        DatagramSocket datagramSocket = new DatagramSocket();
+        return datagramSocket;
     }
 
     /**
@@ -75,10 +73,8 @@ public final class UdpSender {
      * @return экземпляр типа {@link DatagramPacket}.
      */
     private static DatagramPacket pack(String message) {
-        /*
-         * TODO Реализовать метод pack класса UdpSender
-         */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        DatagramPacket datagramPacket = new DatagramPacket(message.getBytes(), message.length());
+        return datagramPacket;
     }
 
 }
